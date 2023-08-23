@@ -1,0 +1,14 @@
+{
+  "name": "movie_genie",
+  "version": "1.0.0",
+  "description": "Website to suggest movies to watch based on chat bot",
+  "main": "0",
+  "scripts": {
+    "test": "run"
+  },
+  "author": "GOOB",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

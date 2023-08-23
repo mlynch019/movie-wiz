@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+  <!-- Additional meta tags, stylesheets, or scripts can be included here -->
+</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap">
+<style>
+    body {
+      background-color: maroon;
+      background-image: url('images/curtainsthree.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment:fixed;
+      
+    }
+    .title-container {
+        margin-top: 10px;
+        margin-left: 425px;
+        font-size: 85px;
+        font-weight:bold;
+        font-family: 'MedievalSharp', sans-serif;
+        color: gold;
+    }
+    .movie-container {
+        margin-top: 20px;
+        color: white;
+        margin-left: 325px;
+        font-size: 40px;
+    }
+    .title-text {
+      position: absolute;
+      display: inline-block;
+      
+      
+      white-space: nowrap;
+      
+      align-items: center;
+    }
+    .image-container {
+        margin-top:0px;
+        align-items: center;
+        margin-left: 575px;
+    }
+</style>
+<body>
+  <!-- Content of the webpage goes here -->
+  
+  <div class="title-container">
+    <p>The Movie Wiz</p>
+  </div>
+  
+
+  <div class = image-container>
+    <img src = {{poster_link}} height = 450 width = 300>
+  </div>
+  <div class = movie-container>
+    <p>Movie Wiz Recommends.... {{movie}}!</p>
+  </div>
+  
+  
+  <!-- Additional HTML elements can be added as needed -->
+  
+  <script src="script.js"></script>
+  <!-- Additional scripts can be included here -->
+</body>
+</html>

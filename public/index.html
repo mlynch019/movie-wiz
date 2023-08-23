@@ -1,0 +1,185 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Movie Wiz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/dist/typed.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+    function redirectToNextPage() {
+      //transition to show movie screen
+      window.location.href = 'showMovie'; 
+    }
+    
+// Call the JavaScript function with the Flask variable value when the page loads
+
+    $(document).ready(function() {
+
+            function displayBotMessage(message) {
+             if(message == "You have reached the max number of questions. A movie will be recommended shortly.") {
+                redirectToNextPage();
+             }
+
+             //typewriter effect and presenting message on screen
+              var index = 0;
+              for (var i = 0; i < message.length; i++) {
+                setTimeout(function(index) {
+                  $("#chat-area").text(message.substring(0, index + 1));
+                }, i * 75, i);
+              }
+
+            }
+            function clearChat() {
+              //function to delete words on screen to allow for next message
+              $("#chat-area").text("");
+            }
+
+            $('#message-form').submit(function(event) {
+                event.preventDefault();
+                var userMessage = $('#user-message').val();
+                $('#user-message').val('');
+
+                // Send user message to the server using AJAX
+                $.ajax({
+                    url: '/process_message',
+                    method: 'POST',
+                    data: { message: userMessage },
+                    success: function(response) {
+                        displayBotMessage(response.message);
+                    }
+                });
+            });
+        });
+        
+  </script>
+
+  <style>
+    body {
+      background-color: maroon;
+      background-image: url('images/curtainsthree.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment:fixed;
+      
+    }
+    .containerText {
+      position:relative;
+      height: 25px;
+      top:675px;
+      left:325px;
+    }
+    
+    .container1 {
+      display: absolute;
+      top: 160;
+      left: 575;
+      height: 100vh;
+      position: relative;
+    }
+
+    .container2{
+      position: absolute;
+      top: 210;
+      left:600;
+     
+    }
+
+    .image1 {
+      z-index: 1;
+    }
+
+    .image2 {
+      z-index: 2;
+    }
+    input[type = "text"] {
+      width: 600px;
+      height: 35px;
+      color: black;
+      
+    }
+    label {
+      color: gold;
+      font-size: 50;
+      font-family: 'MedievalSharp', serif;
+    }
+    .title-text {
+      position: absolute;
+      display: inline-block;
+      top: 75;
+      left:425;
+      font-size: 85px;
+      font-weight:bold;
+      font-family: 'MedievalSharp', sans-serif;
+      white-space: nowrap;
+      color: gold;
+    }
+    .question-text {
+      position: absolute;
+      display: inline-block;
+      top: 700;
+      left:250;
+      font-size: 40px;
+      font-weight:bold;
+      font-family: 'MedievalSharp', sans-serif;
+      white-space: nowrap;
+      color: white;
+    }
+    .response-text {
+      position: absolute;
+      display: inline-block;
+      top: 600;
+      left:300;
+      font-size: 20px;
+      font-family: 'MedievalSharp', sans-serif;
+      color: white;
+      max-width: 900px;
+      word-wrap: normal;
+    }
+    .typewriter-text {
+      overflow: hidden;
+      border-right: .15em solid orange;
+      white-space: normal;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: typing 4.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color:gold;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="title-text">The Movie Wiz</div>
+
+  <div id="chat-area" class = "response-text"> 
+    <p>Welcome to the Movie Wiz! {{first_message}}</p>
+  </div>
+    <form id="message-form" class = "question-text">
+      <label for="user-message">Respond: </label>
+      <input type="text" id="user-message" required>
+      <button onclick = "clearChat()" onclick="displayBotMessage(user-message)" type="submit">Enter</button>
+    </form>
+  <div class="container2">
+    <img id = "bonkers" class="image2" src="images/wizard.png" height = 300 width = 250>
+  </div>
+</body>
+</html>
