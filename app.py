@@ -49,14 +49,6 @@ tools = load_tools(["serpapi"],llm=chat)
 #converstation history
 memory = ConversationBufferMemory(memory_key="chat_history")
 
-# Process the user message and generate a bot response
-    # Replace this logic with your chatbot implementation
-    #________________________________________________________________________________________________________
-    #Asking qustions and getting answers
-
-    #Overall Memory of the interaction. This is passed as the memory into every element 
-    
-
 #First chain prompt/template
 template1 = """
     You are part of a movie recommending computer program called "Movie Wiz". 
