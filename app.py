@@ -152,12 +152,14 @@ def showMovie():
 
     #running chain for url
     url = chain2.run(chat_history = memory) 
-   
+
+    with open("tmdbapi.txt",'r') as token_file:
+        tmdb_api_key = token_file.read()
 
     #A different format of API key for the TMDB
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYjczZWUwZmZhN2QxYmZkODMzOWI4NzAwZWYzZTZmOSIsInN1YiI6IjY0N2M4NmU3ZTMyM2YzMDE0ODE3MjQyNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0_jt4N-jBbqM7yESJ-N3tiu9EXlpsHio3BiCFhm9iYo"
+        "Authorization": "Bearer {{tmdb_api_key}}"
     }
 
     #making the request and turning the string into a json  
