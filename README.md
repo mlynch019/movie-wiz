@@ -6,3 +6,9 @@ Movie Wiz is a web-based large langauge model (LLM) that recommends a movie to a
 
 ## Set-Up
 Clone this repository into VSCode. Execute relevent pip installations. Create 2 txt files named 'api.txt' and 'serpapi.txt'. Create accounts for OpenAi and SerpApi and generate API codes on free plan. Copy codes into respective txt files. Run app.py and visit http://127.0.0.1:5000 on your local browser. 
+
+
+### Image Sources and Referenced Documentation
+https://www.tickpick.com/blog/hollywood-pantages-theatre-seating-chart-with-seat-numbers/ 
+
+https://python.langchain.com/docs/get_started/introduction 
