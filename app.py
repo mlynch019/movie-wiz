@@ -28,12 +28,9 @@ import json
 #reading txt files for API keys (OPENAI and SerpAPI). Gitignore to protect leak
 with open("api.txt",'r') as token_file:
     open_ai_key = token_file.read()
-with open("serpapi.txt",'r') as token_file:
-    serp_ai_key = token_file.read()
-
 
 os.environ['OPENAI_API_KEY'] = open_ai_key
-os.environ['SERPAPI_API_KEY'] = serp_ai_key
+
 
 #initialize first chat model. Will ask user questions and gather information about what movie they are interested in.
 #Higher temp for greater 'creativity' when generating questions to ask the user
@@ -42,9 +39,6 @@ chat = OpenAI(temperature=0.6)
 #initialize second chat model. Will take input of conversation (history) and movie API to make recommendation. 
 #Lower temp because should be strict based on prompt and given conversation history
 chat2 = OpenAI(temperature=0.1)
-
-#loading google search into first chat. Might not require
-tools = load_tools(["serpapi"],llm=chat)
 
 #converstation history
 memory = ConversationBufferMemory(memory_key="chat_history")
@@ -153,7 +147,7 @@ def showMovie():
     #running chain for url
     url = chain2.run(chat_history = memory) 
 
-    with open("tmdbapi.txt",'r') as token_file:
+    with open("tmdb_api.txt",'r') as token_file:
         tmdb_api_key = token_file.read()
 
     #A different format of API key for the TMDB
