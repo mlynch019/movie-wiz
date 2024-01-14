@@ -9,7 +9,10 @@ Clone this repository into VSCode. Execute relevent pip installations. Create 2 
 
 
 ### Image Sources, API Usage, and Referenced Documentation
-https://www.tickpick.com/blog/hollywood-pantages-theatre-seating-chart-with-seat-numbers/ 
+https://www.tickpick.com/blog/hollywood-pantages-theatre-seating-chart-with-seat-numbers/
+
 https://developer.themoviedb.org
+
 https://openai.com/blog/openai-api
+
 https://python.langchain.com/docs/get_started/introduction 
